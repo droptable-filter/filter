@@ -64,16 +64,22 @@ def clearCommonWords(wordList):
     dict = open('common_words.txt', 'rb')
     content = dict.read().upper()
     dict.close()
+    compare = content.split("\n")
     #compareTo = (wordList)
-    print content
-    for item in range(len(wordList)):
-        wordList[item] = wordList[item].upper()
+    #print content
+    print compare
+    for item in content:
+        for item1 in compare:
+            if item == item1:
+                print "found match"
+                print item
+                compare.remove(item)
 
-        if wordList[item] in content:
-            wordList.remove(wordList[item])
 
-    #dict.close()
-    print wordList
+    #     wordList[item] = wordList[item].upper()
+    #     if wordList[item] in content:
+    #         wordList.remove(wordList[item])
+    # print wordList
     return wordList
     # if word in dict:
     #     return True;
