@@ -62,23 +62,23 @@ def stripPunc(word):
 def clearCommonWords(wordList):
 
     dict = open('common_words.txt', 'rb')
-    content = dict.read().upper()
+    content = dict.read().upper().split('\n')
     dict.close()
-    compare = content.split("\n")
+    #compare = wordList.split("\n")
     #compareTo = (wordList)
     #print content
-    print compare
+    #print compare
     for item in content:
-        for item1 in compare:
+        for item1 in wordList:
             if item == item1:
-                print "found match"
-                print item
-                compare.remove(item)
+                #print "found match"
+                wordList.remove(item1)
 
 
     #     wordList[item] = wordList[item].upper()
     #     if wordList[item] in content:
     #         wordList.remove(wordList[item])
+    print wordList
     # print wordList
     return wordList
     # if word in dict:
