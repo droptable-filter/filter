@@ -34,11 +34,22 @@ def isSpam(msg):
     #print messageText
     wordList = messageText.split(" ")
     #wordList = removeBigWords(wordList)
+    #print "hello"
     for i in range(0,len(wordList)-1):
         wordList [i] = stripPunc(wordList[i])
-        print (wordList[i])
-    #for i in wordList:
-    #    print (i)
+
+    print "hello"
+    sizeofList= len(wordList)
+    j = 0
+    while j < sizeofList:
+        j += 1
+        if (isCommonWord(wordList[j])):
+            print(wordList[j])
+            wordList.pop(j)
+    print "hello"
+    #for i in range(0,len(wordList)-1):
+        #print (wordList[i])
+
     return True
 
 def stripPunc(word):
@@ -47,6 +58,24 @@ def stripPunc(word):
         if (i != ',' and i != '.' and i != '?' and i != ';' and i != ':' and i != '!' and i != '"' and i != '`' and i != '(' and i != ')' and i != '^' and i != '}' and i != '{' and i != '[' and i !=']'):
             ret += i
     return ret
+
+# def remove_words_from_list(wordList, temp):
+#     n = len(wordList)
+#     for i in range (n - 1, -1):
+#         if wordList[i] in temp:
+#             del wordList[i]
+
+def isCommonWord(word):
+
+    dict = open('common_words.txt', 'rb')
+
+    content = dict.read()
+    dict.close()
+    #print content
+    if word in content:
+        return True;
+    return False
+    #
 
 def removeBigWords(wordList):
     wordListLen = len(wordList)
