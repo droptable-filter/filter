@@ -16,16 +16,15 @@ import seaborn as sns
 import csv
 import sys
 
-
 # we need function that determines if message passed in is SPAM
 def isSpam(msg):
 
-    email_subject = msg['subject']
-    email_from = msg['from']
+    #email_subject = msg['subject']
+    #email_from = msg['from']
 
     messageText = ""
-    print ('From : ' + email_from + '\n')
-    print ('Subject : ' + email_subject + '\n')
+    #print ('From : ' + email_from + '\n')
+    #print ('Subject : ' + email_subject + '\n')
     for part in msg.walk():
 #        each part is a either non-multipart, or another multipart message
 #        that contains further parts... Message is organized like a tree
@@ -33,7 +32,15 @@ def isSpam(msg):
            messageText=part.get_payload() # prints the raw text
     print('\n')
     #print messageText
-    wordList = messageText.split(" \t\n")
+    wordList = messageText.split(" ")
+    #wordList = removeBigWords(wordList)
     for i in wordList:
-        print (i + '\n')
+        print (i)
     return True
+
+def removeBigWords(wordList):
+    wordListLen = len(wordList)
+    for i in range(0, wordListLen - 1):
+        if len(wordList[i]) > 99:
+           wordList.pop(i)
+    return wordList
