@@ -39,7 +39,7 @@ def read_email_from_gmail():
                     email_from = msg['from']
 
                     if (handleData.isSpam(msg)):
-                        print("SPAM!")
+                        print("SPAMx")
                     else:
                         print("Not spam.")
                     #print ('From : ' + email_from + '\n')

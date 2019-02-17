@@ -34,9 +34,19 @@ def isSpam(msg):
     #print messageText
     wordList = messageText.split(" ")
     #wordList = removeBigWords(wordList)
-    for i in wordList:
-        print (i)
+    for i in range(0,len(wordList)-1):
+        wordList [i] = stripPunc(wordList[i])
+        print (wordList[i])
+    #for i in wordList:
+    #    print (i)
     return True
+
+def stripPunc(word):
+    ret = ""
+    for i in word:
+        if (i != ',' and i != '.' and i != '?' and i != ';' and i != ':' and i != '!' and i != '"' and i != '`' and i != '(' and i != ')' and i != '^' and i != '}' and i != '{' and i != '[' and i !=']'):
+            ret += i
+    return ret
 
 def removeBigWords(wordList):
     wordListLen = len(wordList)
